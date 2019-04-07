@@ -586,6 +586,108 @@
 			}
 		},
 		{
+			"File": "../../../Engine/Plugins/GameWorks/Blast/Blast.uplugin",
+			"Descriptor": 
+			{
+				"FileVersion": 3,
+				"Version": 1,
+				"VersionName": "1.0",
+				"FriendlyName": "Blast",
+				"Description": "Blast",
+				"Category": "Visual FX",
+				"CreatedBy": "NVIDIA",
+				"CreatedByURL": "https://developer.nvidia.com/blast",
+				"DocsURL": "",
+				"MarketplaceURL": "",
+				"SupportURL": "",
+				"EnabledByDefault": true,
+				"CanContainContent": true,
+				"Modules": [
+					{
+						"Name": "BlastLoader",
+						"Type": "Runtime",
+						"LoadingPhase": "PreDefault",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Linux"
+						]
+					},
+					{
+						"Name": "BlastLoaderEditor",
+						"Type": "Editor",
+						"LoadingPhase": "PreDefault",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Linux"
+						]
+					},
+					{
+						"Name": "Blast",
+						"Type": "Runtime",
+						"LoadingPhase": "PreDefault",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Linux"
+						]
+					},
+					{
+						"Name": "BlastEditor",
+						"Type": "Editor",
+						"LoadingPhase": "Default",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Linux"
+						]
+					},
+					{
+						"Name": "BlastMeshEditor",
+						"Type": "Editor",
+						"LoadingPhase": "Default",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Linux"
+						]
+					}
+				]
+			}
+		},
+		{
+			"File": "../../../Engine/Plugins/GameWorks/NvFlow/NvFlow.uplugin",
+			"Descriptor": 
+			{
+				"FileVersion": 3,
+				"Version": 1,
+				"VersionName": "1.0",
+				"FriendlyName": "NvFlow",
+				"Description": "NvFlow",
+				"Category": "Visual FX",
+				"CreatedBy": "NVIDIA",
+				"CreatedByURL": "http://developer.nvidia.com/nvidia-flow",
+				"DocsURL": "",
+				"MarketplaceURL": "",
+				"SupportURL": "",
+				"EnabledByDefault": true,
+				"CanContainContent": false,
+				"Modules": [
+					{
+						"Name": "NvFlow",
+						"Type": "Runtime",
+						"LoadingPhase": "PostConfigInit",
+						"WhitelistPlatforms": [
+							"Win64",
+							"Win32",
+							"Linux"
+						]
+					},
+					{
+						"Name": "NvFlowEditor",
+						"Type": "Editor",
+						"LoadingPhase": "Default"
+					}
+				]
+			}
+		},
+		{
 			"File": "../../../Engine/Plugins/Media/AvfMedia/AvfMedia.uplugin",
 			"Descriptor": 
 			{
@@ -933,43 +1035,6 @@
 							"Win32",
 							"Linux"
 						]
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/NetcodeUnitTest/NUTUnrealEngine4/NUTUnrealEngine4.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "Netcode Unit Test - Unreal Engine 4",
-				"Description": "Exploit unit tests for UE4 and some base UE4 games, based on the Netcode Unit Test framework",
-				"Category": "Networking",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"Modules": [
-					{
-						"Name": "NUTUnrealEngine4",
-						"Type": "Developer",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Win32",
-							"Linux"
-						]
-					}
-				],
-				"Plugins": [
-					{
-						"Name": "NetcodeUnitTest",
-						"Enabled": true
 					}
 				]
 			}
