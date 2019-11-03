@@ -1,0 +1,12 @@
+newmtl bark08
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd bark08.png
+
+newmtl pine branch_t
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd pine branch_t.png
+

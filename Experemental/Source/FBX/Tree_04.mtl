@@ -1,0 +1,12 @@
+newmtl bark11
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd bark11.png
+
+newmtl beech leaf_t
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd beech leaf_t.png
+
