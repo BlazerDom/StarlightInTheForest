@@ -7,6 +7,7 @@
 
 AAIControllerExtend::AAIControllerExtend()
 {
+	SetGenericTeamId(FGenericTeamId(5));
 	perceptionComp = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComp"));
 	sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("sightConfig"));
 
@@ -19,8 +20,37 @@ AAIControllerExtend::AAIControllerExtend()
 		sightConfig->LoseSightRadius = 2200.f;
 		sightConfig->PeripheralVisionAngleDegrees = 90.f;
 
-		sightConfig->DetectionByAffiliation.bDetectNeutrals = true;
+		sightConfig->DetectionByAffiliation.bDetectNeutrals = false;
 		sightConfig->DetectionByAffiliation.bDetectEnemies = true;
-		sightConfig->DetectionByAffiliation.bDetectFriendlies = true;	
+		sightConfig->DetectionByAffiliation.bDetectFriendlies = false;	
 	}
+}
+
+
+ETeamAttitude::Type AAIControllerExtend::GetTeamAttitudeTowards(const AActor& Other) const
+{
+
+	if (const APawn* OtherPawn = Cast<APawn>(&Other)) {
+
+		// DEFAULT BEHAVIOR---------------------------------------------------
+		if (const IGenericTeamAgentInterface* TeamAgent = Cast<IGenericTeamAgentInterface>(OtherPawn->GetController()))
+		{
+			return Super::GetTeamAttitudeTowards(*OtherPawn->GetController());
+		}
+
+		//OR CUSTOM BEHAVIOUR--------------------------------------------------
+		if (const IGenericTeamAgentInterface* TeamAgent = Cast<IGenericTeamAgentInterface>(OtherPawn->GetController()))
+		{
+			//Create an alliance with Team with ID 10 and set all the other teams as Hostiles:
+			FGenericTeamId OtherTeamID = TeamAgent->GetGenericTeamId();
+			if (OtherTeamID == 10) {
+				return ETeamAttitude::Neutral;
+			}
+			else {
+				return ETeamAttitude::Hostile;
+			}
+		}
+	}
+
+	return ETeamAttitude::Neutral;
 }

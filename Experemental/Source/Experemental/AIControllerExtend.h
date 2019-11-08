@@ -24,5 +24,14 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Perception")
 		class UAISenseConfig_Sight * sightConfig;
+	
+	UFUNCTION(BlueprintCallable)
+		void SetTeamId(uint8 teamID) 
+	{ 
+		SetGenericTeamId(FGenericTeamId(teamID));
+	}
+public:
+	// Override this function 
+	ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 };
 
