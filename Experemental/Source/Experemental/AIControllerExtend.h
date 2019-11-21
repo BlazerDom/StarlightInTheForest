@@ -22,7 +22,7 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Perception")
 		class UAIPerceptionComponent * perceptionComp;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Perception")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Perception")
 		class UAISenseConfig_Sight * sightConfig;
 	
 	UFUNCTION(BlueprintCallable)
