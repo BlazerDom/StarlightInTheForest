@@ -22,9 +22,12 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Perception")
 		class UAIPerceptionComponent * perceptionComp;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Perception")
+	UPROPERTY(EditDefaultsOnly, Category = "Perception")
 		class UAISenseConfig_Sight * sightConfig;
-	
+
+	UPROPERTY(EditDefaultsOnly, Category = "Perception")
+		class UAISenseConfig_Hearing * hearingConfig;
+
 	UFUNCTION(BlueprintCallable)
 		void SetTeamId(uint8 teamID) 
 	{ 

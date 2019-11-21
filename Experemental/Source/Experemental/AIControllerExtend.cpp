@@ -4,14 +4,18 @@
 #include "AIControllerExtend.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
+#include "Perception/AISenseConfig_Hearing.h"
 
 AAIControllerExtend::AAIControllerExtend()
 {
+	SetGenericTeamId(FGenericTeamId(5));
 	perceptionComp = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComp"));
 	sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("sightConfig"));
+	hearingConfig = CreateDefaultSubobject<UAISenseConfig_Hearing>(TEXT("hearingConfig"));
 
-	if (perceptionComp && sightConfig)
+	if (perceptionComp && sightConfig, perceptionComp && hearingConfig)
 	{
+		perceptionComp->ConfigureSense(*hearingConfig);
 		perceptionComp->ConfigureSense(*sightConfig);
 		perceptionComp->SetDominantSense(sightConfig->GetSenseImplementation());
 
@@ -21,14 +25,19 @@ AAIControllerExtend::AAIControllerExtend()
 
 		sightConfig->DetectionByAffiliation.bDetectNeutrals = false;
 		sightConfig->DetectionByAffiliation.bDetectEnemies = true;
-		sightConfig->DetectionByAffiliation.bDetectFriendlies = false;	
+		sightConfig->DetectionByAffiliation.bDetectFriendlies = false;
+
+		hearingConfig->HearingRange = 1400.f;
+
+		hearingConfig->DetectionByAffiliation.bDetectNeutrals = false;
+		hearingConfig->DetectionByAffiliation.bDetectEnemies = true;
+		hearingConfig->DetectionByAffiliation.bDetectNeutrals = false;
 	}
 }
 
-
 ETeamAttitude::Type AAIControllerExtend::GetTeamAttitudeTowards(const AActor& Other) const
 {
-
+	
 	if (const APawn* OtherPawn = Cast<APawn>(&Other)) {
 
 		// DEFAULT BEHAVIOR---------------------------------------------------
@@ -42,8 +51,8 @@ ETeamAttitude::Type AAIControllerExtend::GetTeamAttitudeTowards(const AActor& Ot
 		{
 			//Create an alliance with Team with ID 10 and set all the other teams as Hostiles:
 			FGenericTeamId OtherTeamID = TeamAgent->GetGenericTeamId();
-			if (OtherTeamID == GetGenericTeamId()) {
-				return ETeamAttitude::Friendly;
+			if (OtherTeamID == 10) {
+				return ETeamAttitude::Neutral;
 			}
 			else {
 				return ETeamAttitude::Hostile;
