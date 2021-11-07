@@ -13,3 +13,9 @@
 * TAB — можно установить пресет для четырех заклинаний, которые можно активировать нажатием клавиш 1, 2, 3, 4.
 * Список заклинаний можно узнать при нажатии клавиши ESC во время игры.
 
+# Используемые ресурсы
+Advanced Locomotion System V3 https://www.unrealengine.com/marketplace/en-US/product/advanced-locomotion-system-v1?sessionInvalidated=true
+
+treeIt https://www.evolved-software.com/treeit/treeit
+
+My Little Pony - Friendship is magic © Hasbro
